@@ -1,4 +1,4 @@
-package com.lara.hellolara;
+package com.lara;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
