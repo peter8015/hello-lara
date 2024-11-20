@@ -3,9 +3,6 @@ package com.lara.arrayandlinkedlist;
 
 import utils.ListNode;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 /**
  * @author zhanghaibing
  * @date 2024-03-04
@@ -13,6 +10,7 @@ import java.util.Queue;
 public class ReverseKGroup {
 
     /**
+     * deliberate practice
      * 25. K 个一组翻转链表
      * 给你链表的头节点 head ，每 k 个节点一组进行翻转，请你返回修改后的链表。
      * k 是一个正整数，它的值小于或等于链表的长度。如果节点总数不是 k 的整数倍，那么请将最后剩余的节点保持原有顺序。
@@ -35,7 +33,7 @@ public class ReverseKGroup {
      * 主循环：在链表中迭代，每次迭代至少处理一组（k个）节点，直到链表末尾。由于链表长度为n，且每次操作一组k个节点，所以总共执行的操作次数大约是n / k次。因此这部分的时间复杂度为O(n/k)。
      * 综合以上分析，该算法总的时间复杂度为O(n + n/k)，因为反转每个子链表所需的时间相对于总的链表长度来说是可以忽略不计的，最终我们可以将时间复杂度简化为O(n)。这意味着对于给定的链表长度和分组大小k，算法整体运行时间与链表长度线性相关。
      */
-    public ListNode reverseKGroupa(ListNode head, int k) {
+    public ListNode reverseKGroup(ListNode head, int k) {
         // 1. 初始化: 创建一个哑节点（dummy node），其next指向原链表头节点。使用两个指针pre和end，初始时都指向哑节点。
         ListNode dummy = new ListNode(0);
         dummy.next = head;
@@ -56,7 +54,7 @@ public class ReverseKGroup {
             end.next = null;
 
             // 4. 反转子链表：调用reverse方法对从start开始的子链表进行翻转，并更新pre.next指向翻转后的子链表头部
-            pre.next = reversea(start);
+            pre.next = reverse(start);
             start.next = next;
 
             // 更新pre指针，使其指向已反转子链表的新头部，以便在下一次循环中继续处理新的子链表
@@ -66,7 +64,7 @@ public class ReverseKGroup {
         return dummy.next;
     }
 
-    private ListNode reversea(ListNode head) {
+    private ListNode reverse(ListNode head) {
         ListNode pre = null;
         ListNode curr = head;
 
@@ -79,63 +77,39 @@ public class ReverseKGroup {
         return pre;
     }
 
-    public ListNode reverseKGroup(ListNode head, int k) {
-        // 1. 初始化节点
+    public ListNode reverseKGroup2(ListNode head, int k) {
+        if(head == null || head.next == null) {
+            return head;
+        }
+
+        // 创建初始节点
         ListNode dummy = new ListNode(0);
         dummy.next = head;
 
         ListNode pre = dummy;
         ListNode end = dummy;
 
-        // 2. 遍历分组，找到k个节点的结束节点
-        while(end.next != null) {
+        // 遍历链表，k个一组
+        while(end != null) {
             for(int i = 0; i < k && end != null; i++) {
                 end = end.next;
             }
             if(end == null) break;
 
-            // 3. 翻转子链表并记录子链表的开始节点
+            // 记录反转前的位置 1
             ListNode start = pre.next;
             ListNode next = end.next;
             end.next = null;
 
-            // 4. 恢复连接
             pre.next = reverse(start);
             start.next = next;
 
+            // 更新pre指针 2
             pre = start;
             end = pre;
         }
         return dummy.next;
     }
-
-    public ListNode reverse(ListNode head) {
-        if(head == null || head.next == null) {
-            return head;
-        }
-
-        ListNode pre = null;
-        ListNode curr = head;
-
-        while(curr != null) {
-            ListNode temp = curr.next;
-
-            curr.next = pre;
-            pre = curr;
-            curr = temp;
-        }
-        return pre;
-    }
-
-
-
-
-
-
-
-
-
-
 }
 
 

@@ -14,10 +14,12 @@ public class MaxProfit {
      * leetcode 121 买卖股票的最佳时机
      * 给定一个数组 prices ，它的第 i 个元素 prices[i] 表示一支给定股票第 i 天的价格。
      * 你只能选择某一天买入这只股票，并选择在 未来的某一个不同的日子 卖出该股票。设计一个算法来计算你所能获取的最大利润。
-     *
+     * <p>
      * 解题思路：
-     * 时间复杂度分析：
-     *
+     * 1. 利用贪心算法，每天进行买卖，记录当前的最小值和最大利润。
+     * 2. DP
+     * 时间复杂度分析：O(n)
+     * <p>
      * 易错点：
      * 1. minPrice设置为最大值，如果为0，那么在第一个元素为0时，minPrice永远为0，永远无法得到利润
      */
@@ -43,7 +45,28 @@ public class MaxProfit {
     public void test() {
         int[] prices = {7, 1, 5, 3, 6, 4};
 
-        assertEquals(5, maxProfit(prices));
+        assertEquals(5, maxProfit2(prices));
     }
 
+    public int maxProfit2(int[] data) {
+        if (data == null || data.length == 0) {
+            return 0;
+        }
+
+        int min = Integer.MAX_VALUE;
+        int max = 0;
+
+        for (int i = 0; i < data.length; i++) {
+            if (data[i] < min) {
+                min = data[i];
+            } else if (data[i] - min > max) {
+                max = data[i] - min;
+            }
+        }
+        return max;
+    }
 }
+
+
+
+

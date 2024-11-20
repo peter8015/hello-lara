@@ -1,17 +1,22 @@
 package com.lara.dubblepoints;
 
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 
+
 /**
  * @author zhanghaibing
  * @date 2024-02-12
  */
 public class Longest {
+
+    private static final Logger log = LoggerFactory.getLogger(Longest.class);
 
     /**
      * leetcode 3 无重复字符的最长子串
@@ -30,6 +35,9 @@ public class Longest {
      * 2. 对比完成再进行移动
      * max = Math.max(max, right - left + 1);
      * right++;
+     * <p>
+     * [deliberate practice]
+     * time: 3:16
      */
     private int lengthOfLongestSubstring(String s) {
         if (s == null || s.length() == 0) {
@@ -56,33 +64,44 @@ public class Longest {
 
     @Test
     public void test() {
-//        assertEquals(3, lengthOfLongestSubstring("abcabcbb"));
-//        assertEquals(1, lengthOfLongestSubstring("bbbbb"));
-        assertEquals(3, longest("abcabcbb"));
+        assertEquals(3, lengthOfLongestSubstring("abcabcbb"));
     }
 
+    @Test
+    public void test2() {
+        assertEquals(5, longest2("abcabcbbdefg"));
+    }
 
-    public int longest(String s) {
-        int len = s.length();
-        if (s == null || len == 0) {
+    public int longest2(String s) {
+        if(s == null || s.length() == 0) {
             return 0;
         }
 
         int left = 0, right = 0, max = 0;
         Set<Character> sets = new HashSet();
 
-        while (right < len) {
+        while(right < s.length()) {
             char c = s.charAt(right);
-
-            if (!sets.contains(c)) {
+            if(sets.contains(c)) {
+                sets.remove(s.charAt(left));
+                left++;
+            } else {
                 sets.add(c);
                 max = Math.max(max, right - left + 1);
                 right++;
-            } else {
-                sets.remove(s.charAt(left));
-                left++;
             }
         }
         return max;
     }
 }
+
+
+
+
+
+
+
+
+
+
+

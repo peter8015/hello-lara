@@ -31,12 +31,24 @@ public class FindKthLargestX {
         return maxHeap.poll();
     }
 
+    public int findKthLargest2(int[] nums, int k) {
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<>((n1, n2) -> n1 - n2);
+        for (int num : nums) {
+            maxHeap.add(num);
+            if(maxHeap.size() > k) {
+                maxHeap.poll();
+            }
+        }
+        return maxHeap.poll();
+
+    }
+
     @Test
     public void test() {
         // 测试用例1
         int[] nums1 = {3, 2, 1, 5, 6, 4};
         int k1 = 2;
-        System.out.println("The " + k1 + "nd largest element is: " + findKthLargest(nums1, k1));  // 输出应为5
+        System.out.println("The " + k1 + "nd largest element is: " + findKthLargest2(nums1, k1));  // 输出应为5
 
         // 测试用例2
         int[] nums2 = {4, 5, 8, 2, 3, 9, 7};
