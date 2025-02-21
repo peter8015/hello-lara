@@ -41,31 +41,32 @@ public class MaxProfit {
         return profit;
     }
 
+    public int maxProfile2(int[] prices) {
+        int profit = 0;
+        int min = Integer.MAX_VALUE;
+
+        for(int i = 0; i < prices.length; i++) {
+            if(prices[i] < min) {
+                min = prices[i];
+            } else if(profit < prices[i] - min) {
+                profit = prices[i] - min;
+            }
+        }
+
+        return profit;
+    }
+
+
+
     @Test
     public void test() {
         int[] prices = {7, 1, 5, 3, 6, 4};
 
-        assertEquals(5, maxProfit2(prices));
-    }
-
-    public int maxProfit2(int[] data) {
-        if (data == null || data.length == 0) {
-            return 0;
-        }
-
-        int min = Integer.MAX_VALUE;
-        int max = 0;
-
-        for (int i = 0; i < data.length; i++) {
-            if (data[i] < min) {
-                min = data[i];
-            } else if (data[i] - min > max) {
-                max = data[i] - min;
-            }
-        }
-        return max;
+        assertEquals(5, maxProfit(prices));
     }
 }
+
+
 
 
 

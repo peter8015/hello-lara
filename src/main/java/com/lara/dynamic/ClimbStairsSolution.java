@@ -32,6 +32,15 @@ import static org.junit.Assert.assertEquals;
  *  解法三：动态规划，时间复杂度为O(n)
  * @author zhanghaibing
  * @date 2024-03-19
+ * 
+ * Description:
+ * You are climbing a staircase. It takes you either one or two steps to reach the top. Each time you can climb one or two steps.
+ * How many ways to reach the top.
+ *
+ *
+ *
+ *
+ *
  */
 public class ClimbStairsSolution {
     public int climbStairsRecursive(int n) {
@@ -45,8 +54,17 @@ public class ClimbStairsSolution {
     }
 
     public int climbStairs2(int n) {
-        int[] memo = new int[n + 1];
-        return climbStairsMemo(n, memo);
+            if(n == 0) {
+                return 0;
+            } else if(n == 1) {
+                return 1;
+            } else if(n == 2) {
+                return 2;
+            } else if(n > 2) {
+                return climbStairs2(n - 1) + climbStairs2(n - 2);
+            }
+            return 0;
+
     }
 
     // 记录中间值
@@ -105,20 +123,20 @@ public class ClimbStairsSolution {
 //        assertEquals(3, climbStairsRecursive(3));
 //        assertEquals(5, climbStairsRecursive(4));
 
-//        assertEquals(1, climbStairs2(1));
-//        assertEquals(2, climbStairs2(2));
-//        assertEquals(3, climbStairs2(3));
-//        assertEquals(5, climbStairs2(4));
+        assertEquals(1, climbStairs2(1));
+        assertEquals(2, climbStairs2(2));
+        assertEquals(3, climbStairs2(3));
+        assertEquals(5, climbStairs2(4));
 
-        assertEquals(1, climbStairsDp(1));
-        assertEquals(2, climbStairsDp(2));
-        assertEquals(3, climbStairsDp(3));
-        assertEquals(5, climbStairsDp(4));
-
-        assertEquals(1, climbStairs3(1));
-        assertEquals(2, climbStairs3(2));
-        assertEquals(3, climbStairs3(3));
-        assertEquals(5, climbStairs3(4));
+//        assertEquals(1, climbStairsDp(1));
+//        assertEquals(2, climbStairsDp(2));
+//        assertEquals(3, climbStairsDp(3));
+//        assertEquals(5, climbStairsDp(4));
+//
+//        assertEquals(1, climbStairs3(1));
+//        assertEquals(2, climbStairs3(2));
+//        assertEquals(3, climbStairs3(3));
+//        assertEquals(5, climbStairs3(4));
 
     }
 }
