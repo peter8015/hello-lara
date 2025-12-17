@@ -57,4 +57,13 @@ public class TreeNode {
         treeToListDFS(root, 0, res);
         return res;
     }
+
+    public void printTree(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        System.out.print(root.val + " ");
+        printTree(root.left);
+        printTree(root.right);
+    }
 }

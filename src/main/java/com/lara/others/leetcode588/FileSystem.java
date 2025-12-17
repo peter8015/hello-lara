@@ -1,8 +1,5 @@
 package com.lara.others.leetcode588;
 
-
-import org.junit.Test;
-
 import java.util.*;
 
 public class FileSystem {
@@ -24,7 +21,8 @@ public class FileSystem {
         }
     }
 
-    public FileSystem() {}
+    public FileSystem() {
+    }
 
     // 创建目录
     public void mkdir(String path) {
@@ -112,9 +110,5 @@ public class FileSystem {
         }
         return null; // 这里不会执行到，仅为了编译通过
     }
-
-    @Test
-    public void test() {
-        System.out.println("test");
-    }
 }
+

@@ -45,7 +45,6 @@ public class Prime {
         return true;
     }
 
-
     @Test
     public void test2() {
 //        isPrime2(2);

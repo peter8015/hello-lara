@@ -54,7 +54,7 @@ public class BfsLevelTest{
         root.left.left = new TreeNode(4);
         root.left.right = new TreeNode(5);
     
-        List<List<Integer>> result = bfsLevel.levelOrder2(root);
+        List<List<Integer>> result = bfsLevel.levelOrder4(root);
         assertEquals(3, result.size(), "The result should have three levels");
         assertEquals(1, result.get(0).get(0), "The root value should be 1");
         assertEquals(2, result.get(1).get(0), "The left child value should be 2");
