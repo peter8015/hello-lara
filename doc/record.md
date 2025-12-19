@@ -1,3 +1,4 @@
+
 # 75 set colors
 Given an array nums with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white, and blue.
 
@@ -75,3 +76,20 @@ thought：
     Validation: If the two arrays are identical (Arrays.equals), it proves the current substring is a valid anagram.
 
     Collection: Record the left index into the result list and continue sliding until the right pointer reaches the end of the string.
+
+# 560. Subarray Sum Equals K
+A subarray is a contiguous non-empty sequence of elements within an array.
+
+Example 1:
+
+Input: nums = [1,1,1], k = 2
+Output: 2
+Example 2:
+
+Input: nums = [1,2,3], k = 3
+Output: 2
+
+## thought：
+- 前缀和 + 哈希表为了将时间复杂度降到 $O(n)$，我们通常使用前缀和 (Prefix Sum) 结合 哈希表 (HashMap) 的技巧。
+
+- 核心思想：如果在索引 i 处的前缀和为 preSum[i]，在索引 j 处的前缀和为 preSum[j]，那么子数组 nums[i+1...j] 的和就是 preSum[j] - preSum[i]。我们要找的就是满足 preSum[j] - preSum[i] == k 的组合，等价于查找哈希表中是否存在 preSum[j] - k。
