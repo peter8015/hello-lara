@@ -44,3 +44,34 @@ The algorithm runs a single while loop as long as mid <= high. Inside, it follow
     - It is an in-place algorithm. You don't create a new array; you just move elements around in the existing one.
 3. Optimal for Duplicate Values
     - Standard sorting algorithms like QuickSort take O(nlogn). This algorithm is much faster for cases where there are only a few unique values repeated many times.
+
+
+# 438. Find All Anagrams in a String
+
+Give two string s and p, return an array of all the start indices of p's anagrams in s. You may return the answer in any order.
+
+Example 1:
+```Input: s = "cbaebabacd", p = "abc"
+Output: [0,6]
+Explanation:
+The substring with start index = 0 is "cba", which is an anagram of "abc".
+The substring with start index = 6 is "bac", which is an anagram of "abc".
+```
+thought：
+
+1. Pre-computation & Frequency Setup
+   First, establish a reference frequency map (using a size-26 integer array) to store the character counts of string p. This serves as the "DNA" or signature that any valid anagram must match. At the same time, initialize an empty window array to track characters in the current segment of string s.
+
+2. Fixed-Size Sliding Window (In & Out)
+   Iterate through string s using a right pointer to expand the window. For every step:
+
+    Inbound: Add the new character at right to the window frequency map.
+
+    Outbound: If the window width exceeds the length of p, remove the character at the left pointer from the map and increment left. This ensures the sliding window always maintains a constant width equal to the target string p.
+
+3. State Comparison & Result Logging
+   In each iteration (once the window is full), compare the window map against the target map.
+
+    Validation: If the two arrays are identical (Arrays.equals), it proves the current substring is a valid anagram.
+
+    Collection: Record the left index into the result list and continue sliding until the right pointer reaches the end of the string.
