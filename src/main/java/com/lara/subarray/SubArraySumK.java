@@ -11,20 +11,20 @@ import java.util.Map;
  * @date 2025-12-18
  */
 public class SubArraySumK {
+    // O(n)
     public int subarraySum(int[] nums, int k) {
+        // key:sum value:count
+        Map<Integer, Integer> data = new HashMap();
+        data.put(0, 1);
 
-        int count = 0, preSum = 0;
-        // key: 前缀和, value: 该前缀和出现的次数
-        Map<Integer, Integer> map = new HashMap<>();
-        map.put(0, 1); // 基础情况：前缀和刚好等于 k
-
-        for (int num : nums) {
-            preSum += num;
-            // 如果之前存在一个前缀和等于 preSum - k
-            if (map.containsKey(preSum - k)) {
-                count += map.get(preSum - k);
+        int count = 0;
+        int sum = 0;
+        for (int i = 0; i < nums.length; i++) {
+            sum += nums[i];
+            if (data.containsKey(sum - k)) {  //!
+                count += data.get(sum - k);
             }
-            map.put(preSum, map.getOrDefault(preSum, 0) + 1);
+            data.put(sum, data.getOrDefault(sum, 0) + 1);
         }
         return count;
     }
@@ -32,18 +32,15 @@ public class SubArraySumK {
     // Bruth force O(n^2)
     public int subarraySum1(int[] nums, int k) {
         int count = 0;
-        for(int i = 0; i < nums.length; i++) {
+        for (int i = 0; i < nums.length; i++) {
             int sum = 0;
-            for(int j = i; j < nums.length; j++) {
+            for (int j = i; j < nums.length; j++) {
                 sum += nums[j];
-                if(sum == k) count++;
+                if (sum == k) count++;
             }
         }
         return count;
     }
-
-
-
 }
 
 

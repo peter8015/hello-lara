@@ -90,6 +90,4 @@ Input: nums = [1,2,3], k = 3
 Output: 2
 
 ## thought：
-- 前缀和 + 哈希表为了将时间复杂度降到 $O(n)$，我们通常使用前缀和 (Prefix Sum) 结合 哈希表 (HashMap) 的技巧。
-
-- 核心思想：如果在索引 i 处的前缀和为 preSum[i]，在索引 j 处的前缀和为 preSum[j]，那么子数组 nums[i+1...j] 的和就是 preSum[j] - preSum[i]。我们要找的就是满足 preSum[j] - preSum[i] == k 的组合，等价于查找哈希表中是否存在 preSum[j] - k。
+Core Mathematical PrincipleThe sum of a subarray can be expressed as the difference between two prefix sums.Assuming $Sum(i, j)$ represents the sum of the subarray from index $i$ to $j$, then:$$Sum(i, j) = PreSum[j] - PreSum[i-1]$$Our goal is to find the intervals where $Sum(i, j) = k$. This is equivalent to:$$PreSum[j] - PreSum[i-1] = k \implies \mathbf{PreSum[i-1] = PreSum[j] - k}$$
