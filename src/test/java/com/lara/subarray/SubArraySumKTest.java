@@ -22,7 +22,8 @@ class SubArraySumKTest {
         int expected = 2;
 
         // When: 调用方法
-        int result = subArraySumK.subarraySum(nums, k);
+        int result = subArraySumK.subarraySum1(nums, k);
+//        int result = subArraySumK.subarraySum(nums, k);
 
         // Then: 验证结果
         assertEquals(expected, result, "应该找到两个和为2的子数组");

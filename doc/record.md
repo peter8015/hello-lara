@@ -1,12 +1,11 @@
 
-# 75 set colors
+# leetcode75 set colors
+## problem
 Given an array nums with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white, and blue.
 
 We will use the integers 0, 1, and 2 to represent the color red, white, and blue, respectively.
 
 You must solve this problem without using the library's sort function.
-
-
 
 Example 1:
 
@@ -17,6 +16,7 @@ Example 2:
 Input: nums = [2,0,1]
 Output: [0,1,2]
 
+## thought:
 The Dutch National Flag Algorithm is a popular programming technique used to sort an array containing three distinct values (like 0s, 1s, and 2s). It was designed by Edsger Dijkstra to solve the problem of partitioning elements in a single pass.
 #### 🧱 The 3-Pointer Strategy
 The algorithm maintains three pointers to divide the array into four conceptual sections:
@@ -47,8 +47,8 @@ The algorithm runs a single while loop as long as mid <= high. Inside, it follow
     - Standard sorting algorithms like QuickSort take O(nlogn). This algorithm is much faster for cases where there are only a few unique values repeated many times.
 
 
-# 438. Find All Anagrams in a String
-
+# leetcode438. Find All Anagrams in a String
+## problem
 Give two string s and p, return an array of all the start indices of p's anagrams in s. You may return the answer in any order.
 
 Example 1:
@@ -58,7 +58,7 @@ Explanation:
 The substring with start index = 0 is "cba", which is an anagram of "abc".
 The substring with start index = 6 is "bac", which is an anagram of "abc".
 ```
-thought：
+## thought：
 
 1. Pre-computation & Frequency Setup
    First, establish a reference frequency map (using a size-26 integer array) to store the character counts of string p. This serves as the "DNA" or signature that any valid anagram must match. At the same time, initialize an empty window array to track characters in the current segment of string s.
@@ -77,7 +77,8 @@ thought：
 
     Collection: Record the left index into the result list and continue sliding until the right pointer reaches the end of the string.
 
-# 560. Subarray Sum Equals K
+# leetcodde560. Subarray Sum Equals K
+## problem
 A subarray is a contiguous non-empty sequence of elements within an array.
 
 Example 1:
@@ -91,3 +92,21 @@ Output: 2
 
 ## thought：
 Core Mathematical PrincipleThe sum of a subarray can be expressed as the difference between two prefix sums.Assuming $Sum(i, j)$ represents the sum of the subarray from index $i$ to $j$, then:$$Sum(i, j) = PreSum[j] - PreSum[i-1]$$Our goal is to find the intervals where $Sum(i, j) = k$. This is equivalent to:$$PreSum[j] - PreSum[i-1] = k \implies \mathbf{PreSum[i-1] = PreSum[j] - k}$$
+
+
+# leetcode53 Maximum Subarray
+## problem
+Given an integer of array nums, find the subarray with the largest sum, and return its sum
+Example 1:
+
+Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
+Output: 6
+Explanation: The subarray [4,-1,2,1] has the largest sum 6.
+Example 2:
+
+Input: nums = [1]
+Output: 1
+Explanation: The subarray [1] has the largest sum 1.
+
+## thought:
+Kadan's algorithm is a classic dynamic programming algorithm used to solve the "Maximum Subarray Problem." Its objective is to find a contiguous subarray within a given array of integers that has the largest sum and return the sum.
