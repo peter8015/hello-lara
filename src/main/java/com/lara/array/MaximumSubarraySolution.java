@@ -8,7 +8,8 @@ package com.lara.array;
  * @author zhanghaibing
  * @date 2025-12-22
  */
-public class LargestSubArray {
+public class MaximumSubarraySolution {
+    // Kadane's algorithm, O(n)
     public int maxSubArray(int[] nums) {
         if(nums == null || nums.length == 0) {
             throw new IllegalArgumentException("Invalid input");
@@ -23,6 +24,22 @@ public class LargestSubArray {
             largest = Math.max(largest, currentSum);
         }
 
+        return largest;
+    }
+
+    // bruth-force, O(n^2)
+    public int maximumSubArray(int[] nums) {
+        int largest = nums[0];
+
+        for(int i = 0; i < nums.length; i++) {
+            int sum = 0;
+            for(int j = i; j < nums.length; j++) {
+                sum += nums[j];
+                if(largest < sum) {
+                    largest = sum;
+                }
+            }
+        }
         return largest;
     }
 }

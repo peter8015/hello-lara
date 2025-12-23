@@ -15,3 +15,11 @@ x.com :@ZhangPeter25798
 email: peter80151@gmail.com
 
 
+rules:
+1. Class name is same as leetCode problem name, and add "Solution".
+Such as MaximumSubarray+Solution+.java.
+2. 
+2. 
+
+
+

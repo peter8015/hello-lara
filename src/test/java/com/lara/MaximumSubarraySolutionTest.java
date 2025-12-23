@@ -6,7 +6,7 @@ package com.lara;
  * @date 2025-12-22
  */
 
-import com.lara.array.LargestSubArray;
+import com.lara.array.MaximumSubarraySolution;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -17,15 +17,17 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class LargestSubArrayTest {
+public class MaximumSubarraySolutionTest {
 
-    private final LargestSubArray solution = new LargestSubArray();
+    private final MaximumSubarraySolution solution = new MaximumSubarraySolution();
 
     @Test
     @DisplayName("标准示例测试：混合正负数")
     void testStandardExample() {
         int[] nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
-        assertEquals(6, solution.maxSubArray(nums), "应返回子数组 [4,-1,2,1] 的和");
+//        assertEquals(6, solution.maxSubArray(nums), "应返回子数组 [4,-1,2,1] 的和");
+        assertEquals(6, solution.maximumSubArray(nums), "应返回子数组 [4,-1,2,1] 的和");
+
     }
 
     @Test
