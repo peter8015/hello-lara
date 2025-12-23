@@ -109,4 +109,15 @@ Output: 1
 Explanation: The subarray [1] has the largest sum 1.
 
 ## thought:
-Kadan's algorithm is a classic dynamic programming algorithm used to solve the "Maximum Subarray Problem." Its objective is to find a contiguous subarray within a given array of integers that has the largest sum and return the sum.
+Kadane's algorithm is a classic dynamic programming with greedy algorithm.
+
+Kadane’s Algorithm is essentially a 'Keep or Restart' strategy. At every step, we ask: 
+Is the previous running total helping me or hurting me? If it's a 'contributor' (positive), 
+I keep it. If it’s a 'liability' (negative), I discard it and start fresh from the current element.
+
+As we iterate through the array, we maintain a current_sum. For each new element, 
+we have a choice: extend the existing subarray or start a new one. If the previous 
+current_sum is positive, it's a 'contributor,' so we add the current element to it. 
+However, if the current_sum has dropped below zero, it becomes a 'liability' that would 
+only decrease our future potential. In that case, we discard it and reset our sum starting 
+from the current element."
