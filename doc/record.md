@@ -1,4 +1,9 @@
+> rule:
+> 1. Record the problem desc.
+> 2. Record the thoughts.
 
+> prompt:
+> Give thoughts for interview and divide into 3 steps, time complexity plus. 
 # leetcode75 set colors
 ## problem
 Given an array nums with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white, and blue.
@@ -109,9 +114,11 @@ Output: 1
 Explanation: The subarray [1] has the largest sum 1.
 
 ## thought:
-Kadane's algorithm is a classic dynamic programming with greedy algorithm.
+> Dynamic Programming (DP)
 
-Kadane’s Algorithm is essentially a 'Keep or Restart' strategy. At every step, we ask: 
+**Kadane's algorithm is a classic dynamic programming with greedy algorithm.**
+
+Kadane’s Algorithm is essentially a **'Keep or Restart'** strategy. At every step, we ask: 
 Is the previous running total helping me or hurting me? If it's a 'contributor' (positive), 
 I keep it. If it’s a 'liability' (negative), I discard it and start fresh from the current element.
 
@@ -121,3 +128,24 @@ current_sum is positive, it's a 'contributor,' so we add the current element to 
 However, if the current_sum has dropped below zero, it becomes a 'liability' that would 
 only decrease our future potential. In that case, we discard it and reset our sum starting 
 from the current element."
+
+# LeetCode56.Merge Intervals — Medium
+## problem
+Given an array of intervals where intervals[i] = [starti, endi], 
+merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.
+
+Example 1:
+Input: intervals = [[1,3],[2,6],[8,10],[15,18]]
+Output: [[1,6],[8,10],[15,18]]
+Explanation: Since intervals [1,3] and [2,6] overlap, merge them into [1,6].
+
+## thought
+Sorting+Greey
+#### Step 1: Sort O(nlogn)
+Sort the intervals by their start times. This ensures that overlapping intervals are neighbors, turning a messy problem into a simple, ordered list.
+#### Step 2: Scan & Merge O(n)
+Iterate through the list once. If the next interval starts before the current one ends, merge them by extending the end time. This is the Greedy part—making the best choice at each step.
+#### Step 3: Finalize O(n)
+If there’s no overlap, save the current interval to your results and start fresh with the new one. This keeps the process efficient and linear.
+#### 💡 The "Pocket" Version (30-second summary)
+> "I solve this in three steps: Sort the input to bring overlaps together, Scan the list while merging overlapping ranges greedily, and Output the finalized intervals. It’s an efficient $O(N \log N)$ solution."

@@ -10,7 +10,7 @@ package com.lara.array;
  */
 public class MaximumSubarraySolution {
     // Kadane's algorithm, O(n)
-    public int maxSubArray(int[] nums) {
+    public int maximumSubarray(int[] nums) {
         if(nums == null || nums.length == 0) {
             throw new IllegalArgumentException("Invalid input");
         }
@@ -28,8 +28,8 @@ public class MaximumSubarraySolution {
     }
 
     // bruth-force, O(n^2)
-    public int maximumSubArray(int[] nums) {
-        int largest = nums[0];
+    public int maximumSubArray1(int[] nums) {
+        int largest = Integer.MIN_VALUE;
 
         for(int i = 0; i < nums.length; i++) {
             int sum = 0;

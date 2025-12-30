@@ -25,44 +25,42 @@ public class MaximumSubarraySolutionTest {
     @DisplayName("标准示例测试：混合正负数")
     void testStandardExample() {
         int[] nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
-//        assertEquals(6, solution.maxSubArray(nums), "应返回子数组 [4,-1,2,1] 的和");
-        assertEquals(6, solution.maximumSubArray(nums), "应返回子数组 [4,-1,2,1] 的和");
-
+        assertEquals(6, solution.maximumSubarray(nums), "应返回子数组 [4,-1,2,1] 的和");
     }
 
     @Test
     @DisplayName("边缘情况：单元素数组")
     void testSingleElement() {
-        assertEquals(1, solution.maxSubArray(new int[]{1}));
-        assertEquals(-5, solution.maxSubArray(new int[]{-5}));
+        assertEquals(1, solution.maximumSubarray(new int[]{1}));
+        assertEquals(-5, solution.maximumSubarray(new int[]{-5}));
     }
 
     @Test
     @DisplayName("边缘情况：全负数数组")
     void testAllNegativeElements() {
         int[] nums = {-5, -1, -8, -3};
-        assertEquals(-1, solution.maxSubArray(nums), "全负数时应返回最大的那个负数");
+        assertEquals(-1, solution.maximumSubarray(nums), "全负数时应返回最大的那个负数");
     }
 
     @Test
     @DisplayName("包含零的情况")
     void testIncludingZero() {
-        assertEquals(3, solution.maxSubArray(new int[]{0, 1, 2, -1}));
-        assertEquals(0, solution.maxSubArray(new int[]{-1, -2, 0}));
+        assertEquals(3, solution.maximumSubarray(new int[]{0, 1, 2, -1}));
+        assertEquals(0, solution.maximumSubarray(new int[]{-1, -2, 0}));
     }
 
     @Test
     @DisplayName("异常处理：空值检测")
     void testExceptionHandling() {
-        assertThrows(IllegalArgumentException.class, () -> solution.maxSubArray(null));
-        assertThrows(IllegalArgumentException.class, () -> solution.maxSubArray(new int[]{}));
+        assertThrows(IllegalArgumentException.class, () -> solution.maximumSubarray(null));
+        assertThrows(IllegalArgumentException.class, () -> solution.maximumSubarray(new int[]{}));
     }
 
     @ParameterizedTest
     @MethodSource("provideTestCases")
     @DisplayName("参数化测试：多种数组组合")
     void testWithParameters(int[] nums, int expected) {
-        assertEquals(expected, solution.maxSubArray(nums));
+        assertEquals(expected, solution.maximumSubarray(nums));
     }
 
     private static Stream<Arguments> provideTestCases() {
