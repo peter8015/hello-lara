@@ -12,7 +12,7 @@ public class MaximumSubarraySolution {
     // Kadane's algorithm, O(n)
     public int maximumSubarray(int[] nums) {
         if(nums == null || nums.length == 0) {
-            throw new IllegalArgumentException("Invalid input");
+            throw new IllegalArgumentException("Invaliwd input");
         }
 
         int largest = nums[0];

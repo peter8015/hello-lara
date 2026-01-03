@@ -13,58 +13,30 @@ import java.util.List;
  */
 public class MergeIntervalsSolution {
 
-    // sorting + greedy
-    //time O(nlogn)
-    public int[][] mergeIntervals(int[][] nums) {
-        // Edge case handling
-        if(nums.length == 0) return nums;
+    // sorting + greedy  O(nlogn)
+    public int[][] mergeIntervals(int[][] intervals) {
+        if(intervals == null || intervals.length <= 1) return intervals;
 
-        // sorting O(nlogn)
-        Arrays.sort(nums, Comparator.comparingInt(a -> a[0]));
-        System.out.println("Sorted intervals: " + Arrays.deepToString(nums));
+        // sort by the start time
+        Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
 
-        int[] currentInterval = nums[0];
+        // scan and merge
+        int[] current = intervals[0];
         List<int[]> result = new ArrayList<>();
+        for(int i = 1; i < intervals.length; i++) {
+            int nextStart = intervals[i][0];
+            int nextEnd = intervals[i][1];
 
-        // greedy liner scan O(n)
-        for(int i = 0; i < nums.length; i++) {
-            int currentEnd = currentInterval[1];
-            int nextStart = nums[i][0];
-            int nextEnd = nums[i][1];
-
-            if(currentEnd >= nextStart) {
-                // Overlap detected: Extend the end point greedily
-                currentInterval[1] = Math.max(currentEnd, nextEnd);
+            if(current[1] >= nextStart) {
+                current[1] = Math.max(current[1], nextEnd);
             } else {
-                result.add(currentInterval);
-                currentInterval = nums[i];
+                result.add(current);
+                current = intervals[i];
             }
         }
-        result.add(currentInterval);
+        result.add(current);
 
-        System.out.println(Arrays.deepToString(result.toArray()));
         return result.toArray(new int[result.size()][]);
-    }
-
-
-
-    public int[][] mergeIntervals2(int[][] intervals) {
-
-        int[][] result = new int[][]{};
-        if(intervals == null || intervals.length == 0) return result;
-
-
-        for(int i = 0; i < intervals.length; i++) {
-            int[] interval = intervals[i];
-
-
-
-
-        }
-
-
-        return result;
-
     }
 
 }
