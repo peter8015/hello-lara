@@ -149,3 +149,20 @@ Iterate through the list once. If the next interval starts before the current on
 If there’s no overlap, save the current interval to your results and start fresh with the new one. This keeps the process efficient and linear.
 #### 💡 The "Pocket" Version (30-second summary)
 > "I solve this in three steps: Sort the input to bring overlaps together, Scan the list while merging overlapping ranges greedily, and Output the finalized intervals. It’s an efficient $O(N \log N)$ solution."
+
+
+# leetcode189.Rotate Array
+Problem Description
+Given an integer array nums, rotate the array to the right by k steps, where k is non-negative.
+
+Example 1:
+Input: nums = [1,2,3,4,5,6,7], k = 3
+Output: [5,6,7,1,2,3,4]
+
+## algorithmic thought:
+Introduce the Triple Reversal method. Use a small example to "walk" the interviewer through the logic.
+- Say: "I can optimize this to $O(n)$ time and $O(1)$ space using a reversal strategy. For example, if we have [1,2,3,4,5] and $k=2$:"
+    1. Reverse everything: [5,4,3,2,1]
+    2. Reverse the first $k$ (2) elements: [4,5,3,2,1]
+    3. Reverse the rest: [4,5,1,2,3] — Rotation complete.
+
