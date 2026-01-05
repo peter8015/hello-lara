@@ -1,3 +1,4 @@
+# leetcode198. Rotate Array 
 In a coding interview, the way you communicate is just as important as the code itself. Interviewers look for your "algorithmic thinking" process.
 Here is the step-by-step framework to handle Rotate Array (or any algorithm) like a pro:
 #### Step 1: Clarify and Confirm (The "Edge Case" Phase)
