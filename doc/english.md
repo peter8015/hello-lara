@@ -1,0 +1,2 @@
+- dry run 模拟过程
+- Shrink 缩减
