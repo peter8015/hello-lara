@@ -10,17 +10,8 @@ public class RotateArrayTest {
     private RotateArraySolution solution;
 
     @BeforeEach
-    void setUp() {
+     void setUp() {
         solution = new RotateArraySolution();
-    }
-
-
-    @Test
-    public void test() {
-        int k = 7;
-        int r = k % 3;
-
-        System.out.println(r);
     }
 
     @Test
