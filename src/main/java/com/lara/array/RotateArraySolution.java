@@ -60,6 +60,7 @@ public class RotateArraySolution {
     public void rotatex(int[] nums, int k) {
         // edge case check
         if (nums == null || nums.length <= 1) return;
+        if(k == 0) return;
 
         // k > nums.length
         k %= nums.length;

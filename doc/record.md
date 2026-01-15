@@ -1,9 +1,31 @@
-> rule:
-> 1. Record the problem desc.
-> 2. Record the thoughts.
+- rule:
+  - Record the problem desc.
+  - Record the thoughts.
 
-> prompt:
-> Give thoughts for interview and divide into 3 steps, time complexity plus. 
+- prompt:
+  - Give thoughts for interview and divide into 3 steps, time complexity plus.
+  - Rewrite it to fit Google algorithm interview(step1,2,3,4).
+  - So complex, simplify it.
+
+- words
+Summary Checklist for your narration:
+  - "I'm choosing [Data Structure] because..."
+  - "I'm naming this [Name] to reflect..."
+  - "I'm handling the edge case of [X] by..."
+  - "I'm abstracting this because..."
+  - "In a real system, I would also add [Logging/Validation/Tests] here."
+
+# template
+### Why is this "Decrease and Conquer"? (meta thoughts)
+### Step 1: Clarify and Confirm
+### Step 2: Discuss the Brute Force (The "Baseline")
+### Step 3: Propose the Optimal Strategy (The "Pitch")
+### Step 4: Write Clean Code (The "Implementation")
+### Step 5: Complexity Analysis (The "Verification")
+
+
+
+
 # leetcode75 set colors
 ## problem
 Given an array nums with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white, and blue.
@@ -166,3 +188,52 @@ Introduce the Triple Reversal method. Use a small example to "walk" the intervie
     2. Reverse the first $k$ (2) elements: [4,5,3,2,1]
     3. Reverse the rest: [4,5,1,2,3] — Rotation complete.
 
+# leetcode160 Intersection of Two Linked Lists
+## problem
+Given the heads of two singly linked-list, return the node at which two list intersect.
+* If the two linked lists have no intersection at all, return null.
+*
+* Input: intersectVal = 8, listA = [4,1,8,4,5], listB = [5,6,1,8,4,5], skipA = 2, skipB = 3
+* Output: Intersected at '8'
+
+## os
+### Why is this "Decrease and Conquer"? Decrease by a Variable Size (or "Reduction")
+You are decreasing the complexity of the "offset" (the difference in length) by forcing both pointers to travel the exact same total distance. You turn a coordination problem into a simple iteration.
+LeetCode 160 (The Two-Pointer approach) belongs to the Decrease by a Variable Size (or "Reduction") category of the Decrease and Conquer meta-thought.
+Here is why:
+#### 1. The Strategy: Reducing the "Offset"
+The core difficulty of this problem is the difference in length (the offset) between the two lists.
+- In the first pass, the pointers are out of sync.
+- By switching heads, you are decreasing the unknown offset to zero.
+- Once the offset is "conquered" (reduced to 0), the problem is reduced to a simple simultaneous traversal.
+#### 2. Why it fits "Variable Size"
+Unlike Binary Search (which always cuts the problem in half) or Insertion Sort (which always reduces the size by 1), the amount of "progress" made toward alignment in this algorithm depends on the lengths of the lists (M and N). You are reducing the search space through a mathematical trick rather than a fixed division.
+
+### Step 1: Clarify and Confirm 
+#### 1. Functional Clarification
+- Intersection by Identity, not Value: "To confirm, we are looking for the intersection based on reference (memory address), correct? If two different nodes happen to have the same value but different memory addresses, that does not count as an intersection."
+- Structure Preservation: "Is it safe to assume the original list structure should remain unchanged after the function returns? (Usually, the answer is yes, which rules out destructive solutions like reversing the lists)."
+- Cycle-Free: "Can I assume both lists are acyclic? If there were a cycle within one of the lists, the intersection logic would need to change significantly."
+#### 2. Constraints & Scale (The "Staff" Edge)
+- Time/Space Complexity: "My goal is to achieve $O(m + n)$ time complexity. For space, are we aiming for $O(1)$? A hash-set approach would be $O(n)$ space, but I suspect we want a constant space solution."
+- List Lengths: "Is there a significant difference in scale? If one list is millions of nodes and the other is five, does that change our memory constraints?"
+#### 3. Edge Case Matrix
+Scenario	Expected Output	Logic
+No Intersection	null	The pointers should both hit null without matching.
+Identical Lists	headA (or headB)	They intersect at the very first node.
+One List is Null	null	Immediate exit; no intersection possible.
+Lists of Different Lengths	Intersection Node	This is the core challenge (handled by the two-pointer swap).
+Intersection at Tail	Tail Node	The very last node is the only shared element.
+### Step 2: Discuss the Brute Force (The "Baseline")
+"The simplest way is to use a Hash Set. I'd store all the nodes from List A in the set, then walk through List B. The first node I find that's already in the set is the intersection.
+- Why it's okay: It's fast ($O(N+M)$).
+- Why it's not perfect: It uses extra memory ($O(N)$). At Google scale, we prefer $O(1)$ memory."
+### Step 3: Propose the Optimal Strategy (The "Pitch")
+"Imagine two runners on two different paths that eventually merge. Path A is short, Path B is long. To make them meet at the merge point, have them swap paths once they finish their first lap."
+- The Logic:
+    1. Pointer A walks List A, then List B.
+    2. Pointer B walks List B, then List A.
+- The Result: Both will have walked exactly the same total distance ($A + B$). Because they travel the same total length, they must collide at the intersection point during their second lap.
+### Step 4: Write Clean Code (The "Implementation")
+### Step 5: Complexity Analysis (The "Verification")
+Time: $O(N + M)$ — Each pointer walks at most two lists.Space: $O(1)$ — No extra sets or maps. Just two variables.
