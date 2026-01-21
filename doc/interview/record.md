@@ -1,3 +1,7 @@
+
+
+> record all the algorithms 
+
 - rule:
   - Record the problem desc.
   - Record the thoughts.

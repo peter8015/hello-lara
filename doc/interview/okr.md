@@ -1,19 +1,24 @@
+> process of practice
 
 
+
+- prompt: 在各大科技公司出现的频率
 # Hashing
 ~~1. Two Sum — Easy~~
 49. Group Anagrams — Medium
 128. Longest Consecutive Sequence — Medium
 
 #  Substrings & Arrays
-~~560. Subarray Sum Equals K — Medium~~
-239. Sliding Window Maximum — Hard
-76. Minimum Window Substring — Hard
-~~53. Maximum Subarray — Medium~~
-~~56. Merge Intervals — Medium~~
-~~189. Rotate Array — Medium~~
-238. Product of Array Except Self — Medium
-41. First Missing Positive — Hard
+- ~~56. Merge Intervals — Medium~~
+- **238.** Product of Array Except Self — Medium
+- ~~560. Subarray Sum Equals K — Medium~~
+- **239.** Sliding Window Maximum — Hard
+- **76.** Minimum Window Substring — Hard
+- ~~53. Maximum Subarray — Medium~~
+
+- ~~189. Rotate Array — Medium~~
+
+- **41.** First Missing Positive — Hard
 
 # two point
 283. Move Zeroes — Easy

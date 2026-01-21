@@ -1,3 +1,5 @@
+> common use language
+
 #### 1. Clarification & Constraints
 Before you write any code, use these to define the boundaries.
 - "Can I assume the input will always be valid, or should I handle null or empty cases?"
