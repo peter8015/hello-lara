@@ -22,16 +22,16 @@ Summary Checklist for your narration:
   - "In a real system, I would also add [Logging/Validation/Tests] here."
 
 # template 
-prompt: 
-Prompted 把上面 的几步修改为面试时候选人的真实英文表达,使用简单词汇 
-Assume you are a Google L6 candidate, answer LeetCode problem 53. Maximum Subarray with the following template. Template
-### Which algorithm of meta thoughts does it belong to?
-### Step 1: Clarify and Confirm
-### Step 2: Discuss the Brute Force (The "Baseline")
-### Step 3: Propose the Optimal Strategy (The "Pitch")
-### Step 4: Write Clean Code (The "Implementation") (add todo)
-### Step 5: Complexity Analysis (The "Verification")
-
+prompt:
+Assume you are a Google L6 candidate, give me the interview expression 
+for LeetCode problem [238. Product of Array Except Self] 
+with the following template. Template
+#### Which algorithm of meta thoughts does it belong to?
+#### Step 1: Clarify and Confirm
+#### Step 2: Discuss the Brute Force (The "Baseline")
+#### Step 3: Propose the Optimal Strategy (The "Pitch")
+#### Step 4: Write Clean Code (The "Implementation") (add todo)
+#### Step 5: Complexity Analysis (The "Verification")
 
 # commons
 - liner pass
@@ -276,6 +276,33 @@ Intersection at Tail	Tail Node	The very last node is the only shared element.
 - The Result: Both will have walked exactly the same total distance ($A + B$). Because they travel the same total length, they must collide at the intersection point during their second lap.
 ### Step 4: Write Clean Code (The "Implementation")
 ### Step 5: Complexity Analysis (The "Verification")
-Time: $O(N + M)$ — Each pointer walks at most two lists.Space: $O(1)$ — No extra sets or maps. Just two variables.
+Time: $O(N + M)$ — Each pointer walks at most two lists.Space: $O(1)$ — No extra sets or maps. Just two variables.~~
 
 
+# leetcode238. Product of Array Except Self
+- Given an integer array nums, return an array answer such that answer[i]
+is equals to the product of all the elements of nums except nums[i].
+- input: nums = [1,2,3,4]
+- output: [24,12,8,6]
+
+## algorithmic thought:
+### Step 1: Clarify and Confirm — Candidate Script
+- Just to confirm, the array can have positive, negative, or zero numbers.
+- The array has at least one element.
+- We shouldn’t use division.
+- For a single-element array, the result should be [1].
+- Are there any other edge cases I should consider?
+This wording shows the interviewer that you are:
+1. Thinking about edge cases (zeros, negatives, single element)
+2. Confirming constraints (non-empty, no division allowed)
+3. Being thorough (verifying expected return type for edge cases)
+
+### Step 2: Discuss the Brute Force (Simplified)
+- A simple way would be, for each index, multiply all other elements to get the product.
+- This works, but it’s O(n²) time because we repeat a lot of multiplications.
+So it’s correct but too slow for large arrays.
+
+### Step 3: Propose the Optimal Strategy (Simplified)
+- We can do better by splitting the product into two parts: the product of all elements to the left and to the right of each index.
+- First, compute prefix products from the left. Then, traverse from the right and multiply a running suffix product.
+- This way, each element is only multiplied twice, giving O(n) time and O(1) extra space, and it naturally handles zeros and negatives without division.
