@@ -1,45 +1,58 @@
 package com.lara.array;
 
 /**
- * leetcode53. Given an integer of array nums, find the subarray with the largest sum, and return its sum
- * // Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
- * // output 6
+ * leetcode53. 53. Maximum Subarray
+ * Given an integer of array nums, find the subarray with the largest sum, and return its sum.
+ * Subarray is a contiguous and non-empty sequence elements within array.
+ *
+ *  Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
+ * output: 6
  *
  * @author zhanghaibing
  * @date 2025-12-22
  */
 public class MaximumSubarraySolution {
-    // Kadane's algorithm, O(n)
-    public int maximumSubarray(int[] nums) {
+    /**
+     * os:
+     * @param nums
+     * @return
+     */
+    public int maximumSubarrayx(int[] nums) {
         if(nums == null || nums.length == 0) {
-            throw new IllegalArgumentException("Invaliwd input");
+            throw new IllegalArgumentException("nums can not be null");
         }
+        // boundary check
+        if(nums.length == 1) return nums[0];
 
-        int largest = nums[0];
-        int currentSum = nums[0];
+        // kadens algorithm
+        int maxSum = nums[0];
+        int currSum = nums[0];
 
-        // thought: double iterator, find the subarray with largest sum
         for(int i = 0; i < nums.length; i++) {
-            currentSum = Math.max(nums[i], currentSum + nums[i]);
-            largest = Math.max(largest, currentSum);
+            currSum = Math.max(nums[i], currSum + nums[i]);
+            maxSum = Math.max(maxSum, currSum);
         }
 
-        return largest;
+        return maxSum;
     }
 
-    // bruth-force, O(n^2)
-    public int maximumSubArray1(int[] nums) {
-        int largest = Integer.MIN_VALUE;
+
+    public int maximumSubarray(int[] nums) {
+        // boundary check
+        if(nums == null || nums.length == 0) {
+            throw new IllegalArgumentException("nums must be not null");
+        }
+
+        if(nums.length == 1) return nums[0];
+
+        // kaden's algorithm
+        int maxSum = nums[0];
+        int currSum = nums[0];
 
         for(int i = 0; i < nums.length; i++) {
-            int sum = 0;
-            for(int j = i; j < nums.length; j++) {
-                sum += nums[j];
-                if(largest < sum) {
-                    largest = sum;
-                }
-            }
+            currSum = Math.max(nums[i], currSum + nums[i]);
+            maxSum = Math.max(currSum, maxSum);
         }
-        return largest;
+        return maxSum;
     }
 }

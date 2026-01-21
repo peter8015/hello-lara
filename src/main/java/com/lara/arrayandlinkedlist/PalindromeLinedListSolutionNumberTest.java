@@ -10,12 +10,12 @@ import static org.junit.Assert.assertTrue;
  * @date 2024-03-08
  */
 
-public class PalindromeNumberTest {
+public class PalindromeLinedListSolutionNumberTest {
 
     private PalindromeNumber util = new PalindromeNumber();
 
     @Test
-    public void testIsPalindromeNumber() {
+    public void testIsPalindromeLinkedListNumber() {
         // 测试用例1：空或零
         assertTrue(util.isPalindromeNumber(0));
         assertTrue(util.isPalindromeNumber(121));

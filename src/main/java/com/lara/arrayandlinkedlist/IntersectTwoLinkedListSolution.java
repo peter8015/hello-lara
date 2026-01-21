@@ -64,17 +64,17 @@ public class IntersectTwoLinkedListSolution {
         return a;
     }
 
-    // O(m+n) O(1)
     public ListNode intersectTwoLinkedList(ListNode headA, ListNode headB) {
-        // boundary check
         if(headA == null || headB == null) return null;
 
-        // decrease the offset
+        // two pointer to decrease iterat
         ListNode a = headA, b = headB;
+
         while(a != b) {
             a = a == null ? headB : a.next;
-            b = b == null ? headA :b.next;
+            b = b == null ? headA : b.next;
         }
         return a;
     }
+
 }

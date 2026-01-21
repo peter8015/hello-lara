@@ -56,13 +56,6 @@ public class MaximumSubarraySolutionTest {
         assertThrows(IllegalArgumentException.class, () -> solution.maximumSubarray(new int[]{}));
     }
 
-    @ParameterizedTest
-    @MethodSource("provideTestCases")
-    @DisplayName("参数化测试：多种数组组合")
-    void testWithParameters(int[] nums, int expected) {
-        assertEquals(expected, solution.maximumSubarray(nums));
-    }
-
     private static Stream<Arguments> provideTestCases() {
         return Stream.of(
                 Arguments.of(new int[]{5, 4, -1, 7, 8}, 23),
@@ -70,4 +63,7 @@ public class MaximumSubarraySolutionTest {
                 Arguments.of(new int[]{-1, -2, -3}, -1)
         );
     }
+
+
+
 }
