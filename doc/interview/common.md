@@ -35,3 +35,66 @@ Always conclude with the Big O notation.
 Don't stay silent. Use these "lifeline" phrases:
 - "I'm currently thinking about how to handle the base case for this recursion."
 - "I have a general idea of using a two-pointer technique, but I'm refining the logic for when to increment the right pointer."
+
+
+# 2
+#### 第一阶段：理清需求 (Clarification)
+在动手写代码前，先确保没有漏掉隐含条件。
+- 确认输入类型： "What kind of data are we dealing with? Are they all integers, or could there be floating-point numbers?"
+- 确认数据规模： "What is the expected size of the input? This will help me decide between an $O(n^2)$ or $O(n \log n)$ approach."
+- 确认特殊情况： "How should I handle edge cases, such as an empty array, null input, or a single element?"
+- 关于 0 或负数： "Are there any constraints on the values? Can they be negative or zero?"
+- Just to confirm
+- Before I dive into the solution, I'd like to clarify a few things.
+- Is it possible for the array to contain any zeros?
+- Are there any edge cases, like an empty array or just a single element? Or can I follow the constraints that n is at least 2?
+
+#### 第二阶段：沟通思路 (Communication of Strategy)
+在写代码前，先口述你的逻辑，得到面试官的认可。
+- 提出初步想法： "A naive approach would be to use nested loops, but that would take $O(n^2)$ time. I think we can optimize it."
+- 提出优化方案： "To improve the performance, I'm thinking of using a HashMap (or Two Pointers / Sliding Window) to bring the time complexity down to $O(n)$."
+- 权衡利弊： "There is a trade-off here: we can save time by using more memory, or vice versa."
+- 寻求反馈： "Does this approach sound reasonable to you? / Does that make sense?"
+#### 第三阶段：开始编码 (Coding)
+边写边说，不要让空气突然安静。
+- 声明变量： "I'll start by initializing a result array and a variable to keep track of the current sum."
+- 解释循环： "I'm going to iterate through the array once..."
+- 处理边界： "Let me add a sanity check (or guard clause) here to handle null inputs."
+- 编写中： "Now I'll implement the core logic inside this loop."
+#### 第四阶段：检查与测试 (Dry Run & Testing)
+写完后不要立刻说“我写完了”，先自己人肉跑一遍。
+- 自我检查： "Let me walk through an example to see if this logic holds up."
+- 发现错误并修正： "Oh, I see a small bug here. This should be i < n - 1 instead of i < n. Let me fix that real quick."
+- 分析复杂度： "So, the time complexity of this solution is $O(n)$ because we only traverse the array twice, and the space complexity is $O(1)$."
+#### 第五阶段：后续讨论 (Follow-up)
+针对面试官的追问。
+- 询问优化建议： "Is there any particular part of the code you'd like me to optimize further?"
+- 讨论可读性： "In a real production environment, I might break this down into smaller helper functions for better readability."
+- 如果卡住了： "I'm currently thinking about how to handle [specific issue]. I've tried [A], but I'm wondering if [B] might be more efficient." (这样说比沉默好得多)
+#### 💡 几个万能的小短语：
+- "Trade-off": 权衡（面试官最爱听的词，体现工程思维）。
+- "Brute force": 暴力解法（通常作为思考的起点）。
+- "On the fly": 实时/动态地（例如：Updating the sum on the fly）。
+- "Corner cases": 极端/边缘情况。
+- "Space-time complexity": 时空复杂度。
+
+# 3
+1. Before I dive into the solution. Just to confirm a few things.
+    * Are there any edge cases, like any empty array or just a single element? Or can I follow the constraints that n is at least 2?
+    * (How should I handle edge cases, such as an empty array, null input, or a single element?")
+    * Is it possible for the array to contain any zeros?
+    * (Are there any constraints on the values? Can they be negative or zero?)
+    *
+
+    * 2. A naive approach would be to use nested loops, but that would take $O(n^2)$ time. I think we can optimize it."
+    * o improve the performance, I'm thinking of using a HashMap (or Two Pointers / Sliding Window) to bring the time complexity down to $O(n)$.
+    * (There is a trade-off here: we can save time by using more memory, or vice versa.")
+    * 3. A optimal solution is to use prefix and suffix array.
+    * 4.
+    * (I'll start by initializing a result array and a variable to keep track of the current sum.
+    * I'm going to iterate through the array once
+    * Let me add a sanity check (or guard clause) here to handle null inputs.
+    * Now I'll implement the core logic inside this loop.)
+    *
+    * 5. Let me walk through an example to see if this logic holds up
+    *

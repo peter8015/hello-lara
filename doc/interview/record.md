@@ -7,11 +7,14 @@
   - Record the thoughts.
 
 - prompt:
+  - 用 英文面试口述版（30 秒）
   - As a candidate, what should I say in an algorithm interview: code
   - Give thoughts for interview and divide into 3 steps, time complexity plus.
   - Rewrite it to fit Google algorithm interview(step1,2,3,4).
   - So complex, simplify it.
-  - Assume you are an L6 interviewer, what do you want to hear
+- Assume you are an L6 interviewer, what do you want to hear
+- Give a whiteboard explanation version
+- Show how to explain this in under 60 seconds (mock interview style)
 
 - words
 Summary Checklist for your narration:
@@ -287,22 +290,16 @@ is equals to the product of all the elements of nums except nums[i].
 
 ## algorithmic thought:
 ### Step 1: Clarify and Confirm — Candidate Script
-- Just to confirm, the array can have positive, negative, or zero numbers.
-- The array has at least one element.
-- We shouldn’t use division.
-- For a single-element array, the result should be [1].
-- Are there any other edge cases I should consider?
-This wording shows the interviewer that you are:
-1. Thinking about edge cases (zeros, negatives, single element)
-2. Confirming constraints (non-empty, no division allowed)
-3. Being thorough (verifying expected return type for edge cases)
+Before I dive into the code, I'd like to clarify a few things.
+- input or output: How should I handle the edge cases: Such as an empty array, a single element array, or an array with zeros.
+- Constraints: Is it possible for the array to contain any zeros
+- scale: What is the scale of the input?
 
 ### Step 2: Discuss the Brute Force (Simplified)
-- A simple way would be, for each index, multiply all other elements to get the product.
-- This works, but it’s O(n²) time because we repeat a lot of multiplications.
-So it’s correct but too slow for large arrays.
+A naive approach would be to use nested loops, but that would take $O(n^2)$ time. 
 
 ### Step 3: Propose the Optimal Strategy (Simplified)
+I think I can optimize it. I'm thinking of using prefix and suffix product to bring the time complexity down to $O(n)$.
 - We can do better by splitting the product into two parts: the product of all elements to the left and to the right of each index.
 - First, compute prefix products from the left. Then, traverse from the right and multiply a running suffix product.
 - This way, each element is only multiplied twice, giving O(n) time and O(1) extra space, and it naturally handles zeros and negatives without division.
