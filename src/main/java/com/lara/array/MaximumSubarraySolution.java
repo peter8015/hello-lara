@@ -5,7 +5,7 @@ package com.lara.array;
  * Given an integer of array nums, find the subarray with the largest sum, and return its sum.
  * Subarray is a contiguous and non-empty sequence elements within array.
  *
- *  Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
+ * Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
  * output: 6
  *
  * @author zhanghaibing
