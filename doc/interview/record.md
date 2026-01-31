@@ -161,10 +161,10 @@ Sum(i, j) = PreSum[j] - PreSum[i-1]
 $$
 
 Our goal is to find the intervals where $Sum(i, j) = k$. This is equivalent to:
+
 $$
 PreSum[j] - PreSum[i-1] = k \implies \mathbf{PreSum[i-1] = PreSum[j] - k}
 $$
-
 
 # leetcode53 Maximum Subarray
 
@@ -181,7 +181,6 @@ Example 2:
 Input: nums = [1]
 Output: 1
 Explanation: The subarray [1] has the largest sum 1.
-
 
 ## thought:
 
@@ -408,8 +407,8 @@ I think I can optimize it. I'm thinking of using prefix and suffix product to br
 - First, compute prefix products from the left. Then, traverse from the right and multiply a running suffix product.
 - This way, each element is only multiplied twice, giving O(n) time and O(1) extra space, and it naturally handles zeros and negatives without division.
 
-
 # leetcode128. Longest Consecutive Sequence
+
 Given an integer array nums, return the largest length of the consecutive sequence elements.
 
 You must write an algorithm that runs in O(n) time.
@@ -418,18 +417,74 @@ input: nums = [100,4,200,1,3,2]
 output: 4
 
 ## algorithmic thought:
+
 #### Step 1: Clarify and Confirm
+
 Before I dive into the code, I'd like to clarify a few things:
+
 - Can the input array be null or empty? And what should be returned in these cases?
 - What about arrays with only one element? Should it return 1 in that case?
 - What's the maximum size of the input array? (to understand the scale)
 - Confirming that the solution needs to achieve O(n) time complexity as per the requirement?
+
 #### Step 2: Discuss the Brute Force (The "Baseline")
+
 A naive approach would be to sort the array first and then find the longest consecutive sequence, which would take O(n log n) time. However, the requirement is to solve this in O(n) time.
+
 #### Step 3: Propose the Optimal Strategy (The "Pitch")
+
 I propose using a HashSet to store all numbers first, then for each number check if it's the start of a sequence (i.e., num-1 doesn't exist), and if so, count how long the sequence can go. This approach achieves O(n) time complexity since each number will only be checked once in the worst case.
+
 #### Step 4: Write Clean Code (The "Implementation") (add todo)
 
 #### Step 5: Complexity Analysis (The "Verification")
+
 Time complexity: O(n), where n is the number of elements in the input array
 Space complexity: O(n), for storing the elements in the HashSet
+
+
+
+# leetcode49. group anagrams
+
+Given an array of string `str`, group anagrams together. You can return the answer in any order.
+
+**Input:** **strs = ["eat","tea","tan","ate","nat","bat"]**
+
+**Output:** **[["bat"],["nat","tan"],["ate","eat","tea"]]**
+
+## algorithmic thought:
+
+#### Step 1: Clarify and Confirm
+
+Before I dive into the code, I'd like to clarify a few things:
+
+- Can the input array be null or empty? And what should be returned in these cases?
+- What about arrays with only one element? Should it return 1 in that case?
+- What's the maximum size of the input array? (to understand the scale)
+- Confirming that the solution needs to achieve O(n) time complexity as per the requirement?
+
+#### Step 2: Discuss the Brute Force (The "Baseline")
+
+(A naive approach would be to sort the array first and then find the longest consecutive sequence, which would take O(n log n) time. However, the requirement is to solve this in O(n) time.)
+
+The baseline would be to compare every string against every other string. For each pair, we'd check if they are anagrams by counting characters.
+
+#### Step 3: Propose the Optimal Strategy (The "Pitch")
+
+To improve efficiency, we use a **HashMap** to group strings by their "Signature."
+
+#### Step 4: Write Clean Code (The "Implementation") (add todo)
+
+I’ll implement the sorting approach for its readability, using modern Java idioms for conciseness.
+
+#### Step 5: Complexity Analysis (The "Verification")
+
+**Time Complexity: O(N \* K log K)**
+
+* **N** is the number of strings.
+* **K log K** is the cost of sorting each string of length K.
+* **Map operations** (put/get) are O(1) on average.
+
+**Space Complexity: O(N \* K)**
+
+* We store every character of every string in the HashMap.
