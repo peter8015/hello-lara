@@ -22,6 +22,7 @@
   - "I'm handling the edge case of [X] by..."
   - "I'm abstracting this because..."
   - "In a real system, I would also add [Logging/Validation/Tests] here."
+- examples
 
 # template
 
@@ -441,8 +442,6 @@ I propose using a HashSet to store all numbers first, then for each number check
 
 Time complexity: O(n), where n is the number of elements in the input array
 Space complexity: O(n), for storing the elements in the HashSet
-
-
 
 # leetcode49. group anagrams
 

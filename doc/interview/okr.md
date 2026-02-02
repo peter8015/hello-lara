@@ -10,6 +10,14 @@
 
 # Substrings & Arrays
 
+> 前缀和 + 哈希表 (Prefix Sum + HashMap)
+> 4. 计数排序思想/桶排序 (Bucket Sort/Counting)
+> 5. 算法	时间复杂度	空间复杂度	关键点
+> 滑动窗口	O(N)	O(K) (Map大小)	左右边界不回头
+> 双指针	O(N)	O(1)	常用于排序后的数组
+> 前缀和	O(N)	O(N)	空间换时间，处理子数组求和
+> 计数数组	O(N)	O(1)	优化固定字符集的性能
+
 - ~~56. Merge Intervals — Medium~~
 - ~~**238.** Product of Array Except Self — Medium~~
 - ~~560. Subarray Sum Equals K — Medium~~
@@ -21,10 +29,13 @@
 
 # two point
 
-283. Move Zeroes — Easy
-284. Container With Most Water — Medium
-285. 3Sum — Medium
-286. Trapping Rain Water — Hard
+~~383.Move Zeroes — Easy~~
+
+11.Container With Most Water — Medium
+
+15.3Sum — Medium
+
+42.Trapping Rain Water — Hard
 
 # Sliding Window
 

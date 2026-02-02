@@ -15,7 +15,7 @@ public class GroupAnagramsSolution {
 
     // time complexity O(klogk)
     // space complexity O(nk)
-    public List<List<String>> groupAnagrams(String[] strs) {
+    public List<List<String>> groupAnagramsx(String[] strs) {
         // handle edge cases
         if(strs == null || strs.length == 0) return new ArrayList<>();
 
@@ -28,7 +28,29 @@ public class GroupAnagramsSolution {
             Arrays.sort(cs); // sort the chars
             String key = String.valueOf(cs);
 
-            if(!map.containsKey(key)) {
+            map.computeIfAbsent(key, k -> new ArrayList<>()).add(s);
+//            if(!map.containsKey(key)) {
+//                map.put(key, new ArrayList<>());
+//            }
+//            map.get(key).add(s);
+        }
+        return new ArrayList(map.values());
+    }
+
+    public List<List<String>> groupAnagrams(String[] anagrams) {
+
+        // handle edge cases
+        if (anagrams == null || anagrams.length == 0) return new ArrayList<>();
+
+        Map<String, List<String>> map = new HashMap<>();
+
+        // use map to store
+        for (String s : anagrams) {
+            char[] cs = s.toCharArray();
+            Arrays.sort(cs);  // O(klogk)
+            String key = String.valueOf(cs);
+
+            if (!map.containsKey(key)) {
                 map.put(key, new ArrayList<>());
             }
             map.get(key).add(s);
