@@ -43,10 +43,51 @@ with the following template. Template
 
 #### Step 5: Complexity Analysis (The "Verification")
 
-# commons
 
-- liner pass
+## algorithmic thought:
+
+#### Step 1: Clarify and Confirm
+
+Before I dive into the code, I'd like to clarify a few thigns:
+
+- Any constraints on the input? Specifically, can it be null or empty?(null, empty, or one element include?)
+- Should I **default to** null or return an empty result?
+- What's the maximum size of the input array? (to understand the scale)
+- Are we aiming for O(n) here?  Just to confirm, we're looking for O(n) time, correct?
 -
+- Can the input array be null or empty? And what should be returned in these cases?
+- What about arrays with only one element? Should it return 1 in that case?
+- What is the **desired behavior**?
+
+#### Step 2: Discuss the Brute Force (The "Baseline")
+
+(A naive approach would be to sort the array first and then find the longest consecutive sequence, which would take O(n log n) time. However, the requirement is to solve this in O(n) time.)
+
+The baseline would be to compare every string against every other string. For each pair, we'd check if they are anagrams by counting characters.
+
+#### Step 3: Propose the Optimal Strategy (The "Pitch")
+
+To improve efficiency, we use a **HashMap** to group strings by their "Signature."
+
+#### Step 4: Write Clean Code (The "Implementation") (add todo)
+
+I’ll implement the sorting approach for its readability, using modern Java idioms for conciseness.
+
+I'll start with a quick null-check.Let's account for the edge cases first.
+
+Let me just add a **sanity check** here for the array length.
+
+#### Step 5: Complexity Analysis (The "Verification")
+
+**Time Complexity: O(N \* K log K)**
+
+* **N** is the number of strings.
+* **K log K** is the cost of sorting each string of length K.
+* **Map operations** (put/get) are O(1) on average.
+
+**Space Complexity: O(N \* K)**
+
+* We store every character of every string in the HashMap.
 
 # leetcode75 set colors
 
@@ -455,12 +496,17 @@ Given an array of string `str`, group anagrams together. You can return the answ
 
 #### Step 1: Clarify and Confirm
 
-Before I dive into the code, I'd like to clarify a few things:
+Before I dive into the code, I'd like to clarify a few thigns:
 
+- Any constraints on the input? Specifically, can it be null or empty?(null, empty, or one element include?)
+- Should I **default to** null or return an empty result?
+- What's the maximum size of the input array? (to understand the scale)
+- Are we aiming for O(n) here?  Just to confirm, we're looking for O(n) time, correct?
+-
 - Can the input array be null or empty? And what should be returned in these cases?
 - What about arrays with only one element? Should it return 1 in that case?
-- What's the maximum size of the input array? (to understand the scale)
-- Confirming that the solution needs to achieve O(n) time complexity as per the requirement?
+
+- What is the **desired behavior**?
 
 #### Step 2: Discuss the Brute Force (The "Baseline")
 
@@ -475,6 +521,10 @@ To improve efficiency, we use a **HashMap** to group strings by their "Signature
 #### Step 4: Write Clean Code (The "Implementation") (add todo)
 
 I’ll implement the sorting approach for its readability, using modern Java idioms for conciseness.
+
+I'll start with a quick null-check.Let's account for the edge cases first.
+
+Let me just add a **sanity check** here for the array length.
 
 #### Step 5: Complexity Analysis (The "Verification")
 

@@ -1,6 +1,7 @@
 > process of practice
 
 - prompt: 在各大科技公司出现的频率
+- Get total understand for every algorithm
 
 # Hashing
 
@@ -31,7 +32,7 @@
 
 ~~383.Move Zeroes — Easy~~
 
-11.Container With Most Water — Medium
+~~11.Container With Most Water — Medium~~  20260203
 
 15.3Sum — Medium
 
