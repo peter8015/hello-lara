@@ -21,6 +21,8 @@ import java.util.List;
 public class ThreeSumSolution {
 
     /**
+     * Solution with todo(memory)
+     *
      * time complexity: O(n^2)
      * space complexity: O(n)
      *
@@ -33,19 +35,18 @@ public class ThreeSumSolution {
         // edge cases check  todo Edge case: 3Sum needs at least 3 elements
         if(nums == null || nums.length < 3) return new ArrayList<>();
 
-        // sort array to avoid dumplicates
+        // sort array to avoid duplicates
         Arrays.sort(nums);
 
-        // use two pointers
-        for(int i = 0; i < nums.length - 2; i++) {   // todo i = 1  nums.length - 2
-            // todo Since the array is sorted, if my current number is greater than zero,
-            // there's no way the remaining numbers will sum to zero. So I can just break early to save time."  [-1,0, 1,2,4]
+        // use two-pointer
+        for(int i = 0; i < nums.length - 2; i++) {   // todo "nums.length - 2", three elements
+            // todo Since the array is sorted, if my current number is greater than zero, sum > 0
             if(nums[i] > 0) break;
 
             //todo skipping duplicates for i to keep the result set unique.
             if(i > 0 && nums[i] == nums[i - 1]) continue;
 
-            int left = i + 1, right = nums.length - 1;  //todo left = i + 1
+            int left = i + 1, right = nums.length - 1;  //todo left = i + 1 if left = i, num[i] == nums[left] add same number twice
             while(left < right) {
                 int sum = nums[i] + nums[left] + nums[right];
 

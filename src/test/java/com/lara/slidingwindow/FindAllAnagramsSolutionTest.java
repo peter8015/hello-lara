@@ -5,15 +5,14 @@ import org.junit.jupiter.api.DisplayName;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * {@link FindAnagramsSolution#findAnagram} 的单元测试类
+ * {@link FindAllAnagramsSolution#findAllAnagrams} 的单元测试类
  */
-class FindAnagramsSolutionTest {
+class FindAllAnagramsSolutionTest {
 
-    private final FindAnagramsSolution solution = new FindAnagramsSolution();
+    private final FindAllAnagramsSolution solution = new FindAllAnagramsSolution();
 
     @Test
     @DisplayName("基本功能测试 - 存在多个匹配项")
@@ -23,7 +22,7 @@ class FindAnagramsSolutionTest {
         String p = "ab";
 
         // When: 执行查找异位词方法
-        List<Integer> actualResult = solution.findAnagram(s, p);
+        List<Integer> actualResult = solution.findAllAnagrams(s, p);
 
         // Then: 验证结果正确性
         List<Integer> expectedResult = Arrays.asList(0, 2);
@@ -38,7 +37,7 @@ class FindAnagramsSolutionTest {
         String p = "abc";
 
         // When: 执行查找异位词方法
-        List<Integer> actualResult = solution.findAnagram(s, p);
+        List<Integer> actualResult = solution.findAllAnagrams(s, p);
 
         // Then: 结果应为空列表
         assertTrue(actualResult.isEmpty());
@@ -52,7 +51,7 @@ class FindAnagramsSolutionTest {
         String p = "";
 
         // When: 执行查找异位词方法
-        List<Integer> actualResult = solution.findAnagram(s, p);
+        List<Integer> actualResult = solution.findAllAnagrams(s, p);
 
         // Then: 结果应为空列表
         assertTrue(actualResult.isEmpty());
@@ -66,7 +65,7 @@ class FindAnagramsSolutionTest {
         String p = "abcd";
 
         // When: 执行查找异位词方法
-        List<Integer> actualResult = solution.findAnagram(s, p);
+        List<Integer> actualResult = solution.findAllAnagrams(s, p);
 
         // Then: 结果应为空列表
         assertTrue(actualResult.isEmpty());
@@ -80,7 +79,7 @@ class FindAnagramsSolutionTest {
         String p = "bca";
 
         // When: 执行查找异位词方法
-        List<Integer> actualResult = solution.findAnagram(s, p);
+        List<Integer> actualResult = solution.findAllAnagrams(s, p);
 
         // Then: 应找到一个匹配项，起始索引为0
         List<Integer> expectedResult = Arrays.asList(0);
@@ -95,7 +94,7 @@ class FindAnagramsSolutionTest {
         String p = "xyz";
 
         // When: 执行查找异位词方法
-        List<Integer> actualResult = solution.findAnagram(s, p);
+        List<Integer> actualResult = solution.findAllAnagrams(s, p);
 
         // Then: 结果应为空列表
         assertTrue(actualResult.isEmpty());
@@ -109,7 +108,7 @@ class FindAnagramsSolutionTest {
         String p = "aab";
 
         // When: 执行查找异位词方法
-        List<Integer> actualResult = solution.findAnagram(s, p);
+        List<Integer> actualResult = solution.findAllAnagrams(s, p);
 
         // Then: 应从索引1开始有一个匹配项
         List<Integer> expectedResult = Arrays.asList(1);

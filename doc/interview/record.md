@@ -2,8 +2,9 @@
 
 - rule:
 
-  - Record the problem desc.
-  - Record the thoughts.
+  - Record the problem desc use `todo`.
+  - Record the thoughts `use steps`.
+  - Figure out all the problems. Get the hang of it.
 - prompt:
 
   - 用 英文面试口述版（30 秒）
@@ -41,53 +42,51 @@ with the following template. Template
 
 #### Step 4: Write Clean Code (The "Implementation") (add todo)
 
+- Pro-Tips for "The Wall Street Style" Interview:
+
+* **Don't narrate the syntax:** Don't say "Now I am writing a for-loop i equals zero semicolon..." That's boring.
+* **Narrate the intent:** Say "Now I'm setting up the main iteration to fix the first element of our triplet."
+* **Admit the "Todo":** If you forget a specific Java syntax (like `Arrays.asList`), just say: *"I'll put a placeholder here, I'm fairly certain the method is `asList`, but the core logic remains the same."*
+
 #### Step 5: Complexity Analysis (The "Verification")
 
+---
 
 ## algorithmic thought:
 
 #### Step 1: Clarify and Confirm
 
-Before I dive into the code, I'd like to clarify a few thigns:
+> Before I dive into the code, I'd like to clarify a few constraints:
 
-- Any constraints on the input? Specifically, can it be null or empty?(null, empty, or one element include?)
-- Should I **default to** null or return an empty result?
-- What's the maximum size of the input array? (to understand the scale)
-- Are we aiming for O(n) here?  Just to confirm, we're looking for O(n) time, correct?
--
-- Can the input array be null or empty? And what should be returned in these cases?
-- What about arrays with only one element? Should it return 1 in that case?
-- What is the **desired behavior**?
+* **Input Integrity:** "Can I assume the input might be `null` or contain fewer than 3 elements? In such cases, should I return an empty list or throw an exception?
+* **Duplicates:** "The problem asks for unique triplets.
+* **Data Scale:** "What’s the maximum size of the array? This will help me determine if an **\$O(N^2)\$** solution is acceptable or if we need further optimization."
 
 #### Step 2: Discuss the Brute Force (The "Baseline")
 
-(A naive approach would be to sort the array first and then find the longest consecutive sequence, which would take O(n log n) time. However, the requirement is to solve this in O(n) time.)
-
-The baseline would be to compare every string against every other string. For each pair, we'd check if they are anagrams by counting characters.
+- A naive approach would be a **triple-nested loop** to check every possible combination. However, this gives us **O(N^3)\** (big o of n cubed) time complexity.
+- (Furthermore, handling duplicate triplets in a brute-force way is extremely inefficient, usually requiring a Hashset of sorted triplets.)
 
 #### Step 3: Propose the Optimal Strategy (The "Pitch")
 
-To improve efficiency, we use a **HashMap** to group strings by their "Signature."
+- To optimize this, I propose a **Sort + Two-Pointer** approach:"
+- **Preprocessing:** "First, we sort the array. This allows us to use the two-pointer technique and, more importantly, **efficiently skip duplicates** by comparing adjacent elements."Step 4: Write Clean Code (The "Implementation") (add todo)
 
-#### Step 4: Write Clean Code (The "Implementation") (add todo)
+#### step 4: clean clean code(The "Implenmentation")
 
-I’ll implement the sorting approach for its readability, using modern Java idioms for conciseness.
+- I’m going to use a **Sanity Check** here:
+- I'll first **sort the array**.
 
-I'll start with a quick null-check.Let's account for the edge cases first.
-
-Let me just add a **sanity check** here for the array length.
+* "Now, I’ll initialize my `left` and `right` pointers to scan the remainder of the array."
+* "If the `current_sum` is too small, I'll move the `left` pointer forward to increase the value. Conversely, if it's too large, I'll decrement the `right` pointer."
+* "The code is written. Now, I’ll **dry-run** this with a small test case—say `[-1, 0, 1]`—to verify the pointer movements."
 
 #### Step 5: Complexity Analysis (The "Verification")
 
-**Time Complexity: O(N \* K log K)**
-
-* **N** is the number of strings.
-* **K log K** is the cost of sorting each string of length K.
-* **Map operations** (put/get) are O(1) on average.
-
-**Space Complexity: O(N \* K)**
-
-* We store every character of every string in the HashMap.
+- Time Complexity: O(N^2)
+-
+- *Analysis:* Sorting takes **\$O(N \\log N)\$**. The nested loops (one `for` and one `while`) take **\$O(N^2)\$**. Since **\$N^2\$** dominates, the total is **\$O(N^2)\$**.
+- Space Complexity: O(N)
 
 # leetcode75 set colors
 
@@ -505,7 +504,6 @@ Before I dive into the code, I'd like to clarify a few thigns:
 -
 - Can the input array be null or empty? And what should be returned in these cases?
 - What about arrays with only one element? Should it return 1 in that case?
-
 - What is the **desired behavior**?
 
 #### Step 2: Discuss the Brute Force (The "Baseline")
@@ -537,3 +535,89 @@ Let me just add a **sanity check** here for the array length.
 **Space Complexity: O(N \* K)**
 
 * We store every character of every string in the HashMap.
+
+# leetcode49. group anagrams
+
+Give an integer array, return all the triplets [nums[i], nums[j], nums[k]],
+
+such that i != j, j != k, and i != k，and [nums[i] + nums[j] + nums[k]] == 0.
+
+Notice triplets are not duplicate.
+
+Notice that the solution set must not contain duplicate triplets.
+
+input: nums = [-1, 0, 1, 2, -1, -4]    -4 -1 -1 0 1 2
+
+output: [[-1, -1, 2], [-1, 0, 1]]
+
+## algorithmic thought:
+
+#### Step 1: Clarify and Confirm
+
+> Before I dive into the code, I'd like to clarify a few constraints:
+
+* **Input Integrity:** "Can I assume the input might be `null` or contain fewer than 3 elements? In such cases, should I return an empty list or throw an exception?
+* **Duplicates:** "The problem asks for unique triplets.
+* **Data Scale:** "What’s the maximum size of the array? This will help me determine if an **\$O(N^2)\$** solution is acceptable or if we need further optimization."
+
+#### Step 2: Discuss the Brute Force (The "Baseline")
+
+- A naive approach would be a **triple-nested loop** to check every possible combination. However, this gives us **O(N^3)\** (big o of n cubed) time complexity.
+- (Furthermore, handling duplicate triplets in a brute-force way is extremely inefficient, usually requiring a Hashset of sorted triplets.)
+
+#### Step 3: Propose the Optimal Strategy (The "Pitch")
+
+- To optimize this, I propose a **Sort + Two-Pointer** approach:"
+- **Preprocessing:** "First, we sort the array. This allows us to use the two-pointer technique and, more importantly, **efficiently skip duplicates** by comparing adjacent elements."Step 4: Write Clean Code (The "Implementation") (add todo)
+
+#### step 4: clean clean code(The "Implenmentation")
+
+- I’m going to use a **Sanity Check** here:
+- I'll first **sort the array**.
+
+* "Now, I’ll initialize my `left` and `right` pointers to scan the remainder of the array."
+* "If the `current_sum` is too small, I'll move the `left` pointer forward to increase the value. Conversely, if it's too large, I'll decrement the `right` pointer."
+* "The code is written. Now, I’ll **dry-run** this with a small test case—say `[-1, 0, 1]`—to verify the pointer movements."
+
+#### Step 5: Complexity Analysis (The "Verification")
+
+- Time Complexity: O(N^2)
+-
+- *Analysis:* Sorting takes **\$O(N \\log N)\$**. The nested loops (one `for` and one `while`) take **\$O(N^2)\$**. Since **\$N^2\$** dominates, the total is **\$O(N^2)\$**.
+- Space Complexity: O(N)
+
+# leetcode42 Trapping Rain Water
+
+You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the i line are
+
+(i, 0) and (i, height[i])
+
+## algorithmic thought:
+
+#### Step 1: Clarify and Confirm
+
+> Before I dive into the code, I'd like to clarify a few constraints:
+
+* **Input Integrity:** "Can I assume the input might be `null` or contain fewer than 3 elements? In such cases, should I return an empty list or throw an exception?
+* **Data Scale:** What’s the maximum size of the array?
+
+#### Step 2: Discuss the Brute Force (The "Baseline")
+
+- A naive approach would be the bruth force. For the position, scan all the elements for the left and right for the max. However, this gives us **O(N^2)\** (big o of n cubed) time complexity.
+
+#### Step 3: Propose the Optimal Strategy (The "Pitch")
+
+> To optimize this, I propose two-pointer approach
+
+- For each position, the trapped water depends on the minimum of left max height and right max height
+
+#### step 4: clean clean code(The "Implenmentation")
+
+- I’m going to use a **Sanity Check** here
+
+
+#### Step 5: Complexity Analysis (The "Verification")
+
+
+- Time Complexity: O(N)
+- Space Complexity: O(1)
