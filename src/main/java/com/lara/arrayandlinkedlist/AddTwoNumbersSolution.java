@@ -24,7 +24,7 @@ public class AddTwoNumbersSolution {
      * @param l2
      * @return
      */
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+    public ListNode addTwoNumbersx(ListNode l1, ListNode l2) {
         // handle edge cases
         if (l1 == null && l2 == null) {
             throw new RuntimeException("Both l1 and l2 cannot be null.");
@@ -45,6 +45,34 @@ public class AddTwoNumbersSolution {
             if (l1 != null) l1 = l1.next;
             if (l2 != null) l2 = l2.next;
             temp = temp.next;
+        }
+        return dummy.next;
+    }
+
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        if (l1 == null && l2 == null) {
+            throw new RuntimeException("Both l1 and l2 cannot be null.");
+        }
+
+        ListNode dummy = new ListNode(0);
+        ListNode temp = dummy;
+        int v1 = 0, v2 = 0, sum = 0, carry = 0;
+
+        while (l1 != null || l2 != null || carry != 0) {
+            v1 = l1 == null ? 0 : l1.val;
+            v2 = l2 == null ? 0 : l2.val;
+
+            sum = v1 + v2 + carry;
+            carry = sum / 10;
+            temp.next = new ListNode(sum % 10);
+
+            if (l1 != null) l1 = l1.next;
+            if (l2 != null) l2 = l2.next;
+            temp = temp.next;
+
+        }
+        if (carry > 0) {
+            dummy.next = new ListNode(carry);
         }
         return dummy.next;
     }
