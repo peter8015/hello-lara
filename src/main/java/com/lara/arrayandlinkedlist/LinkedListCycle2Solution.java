@@ -64,32 +64,30 @@ public class LinkedListCycle2Solution {
 
 
     public ListNode linkedListCycle2(ListNode head) {
-        if (head == null || head.next == null) return null;
+        // handle edge cases
+        if(head == null || head.next == null) return null;
 
-        // detect the cycle, use two-pointer
+        // use two pointers
         ListNode slow = head;
         ListNode fast = head;
 
-        while (fast != null && fast.next != null) {
+        while(fast != null && fast.next != null) {
             fast = fast.next.next;
             slow = slow.next;
 
-            if (fast == slow) {
-                // find the start of the cycle
+            // find the cycle
+            if(fast == slow) {
                 ListNode p1 = head;
                 ListNode p2 = slow;
 
-                while (p1 != p2) {
+                while(p1 != p2) {
                     p1 = p1.next;
                     p2 = p2.next;
+
                 }
                 return p1;
             }
         }
-
         return null;
     }
-
-
-
 }
