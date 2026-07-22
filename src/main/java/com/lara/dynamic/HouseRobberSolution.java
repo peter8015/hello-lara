@@ -16,7 +16,7 @@ public class HouseRobberSolution {
 
     // time complexity : O(n)
     // space complexity : O(1)
-    public int rob(int[] nums) {
+    public int robx(int[] nums) {
         // prev1 represents max profit up to the previous house
         int prev1 = 0, prev2 = 0;
 
@@ -29,12 +29,15 @@ public class HouseRobberSolution {
         return prev1;
     }
 
+    // time complexity : O(n)
+    // space complexity : O(1)
+    public int rob(int[] nums) {
+        // edge check
+        if(nums == null || nums.length == 0) return 0;
 
-
-    public int rob1(int[] nums) {
         int prev1 = 0, prev2 = 0;
-
         for(int i = 0; i < nums.length; i++) {
+            // decide rob or not
             int curr = Math.max(prev1, prev2 + nums[i]);
             prev2 = prev1;
             prev1 = curr;
@@ -42,14 +45,12 @@ public class HouseRobberSolution {
         return prev1;
     }
 
-
     public static void main(String[] args) {
         HouseRobberSolution solution = new HouseRobberSolution();
         int result = solution.rob(new int[]{1, 2, 3, 1, 7});
-        System.out.println(result);
+        System.out.println(result); //11
 
     }
-
 }
 
 

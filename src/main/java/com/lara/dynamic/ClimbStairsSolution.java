@@ -43,39 +43,16 @@ package com.lara.dynamic;
  * How many distinct ways can you climb to the top?
  */
 public class ClimbStairsSolution {
-    public int climbStairsRecursive(int n) {
-        if (n == 1) {
-            return 1;
-        }
-        if (n == 2) {
-            return 2;
-        }
-        return climbStairsRecursive(n - 1) + climbStairsRecursive(n - 2);
-    }
 
-    // 记录中间值
-    private int climbStairsMemo(int n, int[] memo) {
-        if (memo[n] > 0) {
-            return memo[n];
-        }
-        if (n == 1) {
-            memo[1] = 1;
-        } else if (n == 2) {
-            memo[2] = 2;
-        } else {
-            memo[n] = climbStairsMemo(n - 1, memo) + climbStairsMemo(n - 2, memo);
-        }
-        return memo[n];
-    }
+    // time complexity: O(n)
+    // space complexity: O(n)
+    public int climbStairs3(int n) {
+        if (n < 1) return 0;
 
-    // 动态规划
-    public int climbStairsDp(int n) {
-        if (n == 1) {
-            return 1;
-        }
+        if (n == 1) return 1;
+        if (n == 2) return 2;
 
         int[] dp = new int[n + 1];
-
         dp[1] = 1;
         dp[2] = 2;
 
@@ -85,8 +62,10 @@ public class ClimbStairsSolution {
         return dp[n];
     }
 
-    // 滚动数组
-    public int climbStairs3(int n) {
+    // time complexity: O(n)
+    // space complexity: O(1)
+    // roll array
+    public int climbStairs2(int n) {
         if (n == 1) {
             return 1;
         }
@@ -101,4 +80,43 @@ public class ClimbStairsSolution {
         }
         return second;
     }
+
+    public int climbStairs(int n) {
+        if(n < 1) return 0;
+
+        if(n == 1) return 1;
+        if(n == 2) return 2;
+
+        // store result in array
+        int[] dp = new int[n + 1];
+        dp[1] = 1;
+        dp[2] = 2;
+
+        for(int i = 3; i <= n; i++) {
+            dp[i] = dp[i - 1] + dp[i - 2];
+        }
+        return dp[n];
+    }
+
+
+    public static void main(String[] args) {
+        ClimbStairsSolution obj = new ClimbStairsSolution();
+
+        // 多组测试用例
+        System.out.println("n = 0，方法返回：" + obj.climbStairs(0));  // 0
+        System.out.println("n = 1，方法返回：" + obj.climbStairs(1));  // 1
+        System.out.println("n = 2，方法返回：" + obj.climbStairs(2));  // 2
+        System.out.println("n = 3，方法返回：" + obj.climbStairs(3));  // 3
+        System.out.println("n = 4，方法返回：" + obj.climbStairs(4));  // 5
+        System.out.println("n = 5，方法返回：" + obj.climbStairs(5));  // 8
+    }
 }
+
+/**
+ * 先说思路：识别出这是斐波那契数列/动态规划问题
+ * 从暴力开始：先写递归解法，指出重复计算问题
+ * 逐步优化：记忆化 → DP → 滚动数组
+ * 主动分析：说出时间复杂度和空间复杂度
+ * 考虑边界：处理 n=0, n=1 等特殊情况
+ * 准备变体：熟悉上述扩展问题
+ */

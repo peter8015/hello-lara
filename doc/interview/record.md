@@ -620,7 +620,6 @@ You are given an integer array height of length n. There are n vertical lines dr
 - Time Complexity: O(N)
 - Space Complexity: O(1)
 
-
 # leetcode142. LinedListCycle2
 
 Give a head of a linked list, return the node where the cycle begins. If there is no cycle, return null.
@@ -662,3 +661,25 @@ To verify the efficiency:
 
 * **Time Complexity:**\$O(N)\$. Even though we have two phases, we traverse the list a constant number of times.
 * **Space Complexity:**\$O(1)\$. We only use two pointers regardless of the input size, which is a significant improvement over the Hash Set approach."
+
+
+
+# leetcode 322
+
+#### Step 1: Clarify and Confirm
+
+#### Step 2: Discuss the Brute Force (The "Baseline")
+
+#### Step 3: Propose the Optimal Strategy (The "Pitch")
+
+#### Step 4: Write Clean Code (The "Implementation") (add todo)
+
+**What to say:** > "We use a nested loop: the outer loop iterates through all amounts, and the inner loop tries every coin. For the core logic: `dp[money] = Math.min(dp[money], dp[money - coin] + 1)`.
+
+This means if we choose the current coin, we look up the **saved best answer for the remainder** (`money - coin`), add `1` for the current coin, and update our table if this new combination uses fewer coins."
+
+#### Step 5: Complexity Analysis (The "Verification")
+
+**What to say:** > "The **Time Complexity is **\$O(N \\times M)\$****, where **\$N\$** is the target amount and **\$M\$** is the number of coin denominations. We visit each sub-amount and check all coins.
+
+The **Space Complexity is **\$O(N)\$**** to store the DP lookup table."
