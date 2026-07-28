@@ -10,6 +10,9 @@ public class Main {
         ExecutorService executor = Executors.newFixedThreadPool(4);
         DagEngine engine = new DagEngine(executor);
 
+        ExecutorService es = Executors.newFixedThreadPool(5);
+        DagEngine de = new DagEngine(es);
+
         // 构造具体任务节点
         TaskNode taskA = new TaskNode("Task-A") {
             @Override
